@@ -1,0 +1,243 @@
+body { 
+    background-color: #141414;
+    font-family: "Roboto", sans-serif ;
+    color: white;
+}
+
+/* HEADER  */
+
+.logo {
+    margin-left: 50px;
+}
+
+.logo a {
+  display: none;
+}
+nav { 
+    display: flex;
+    margin-top: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+}
+nav ul li { 
+    list-style: none;
+    text-decoration: none;
+    margin: 0px 50px;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.sub-menu a:hover { 
+    background-color: #fe9299;
+    color: white
+    
+}
+nav ul li a { 
+    text-decoration: none;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.ul-menu { 
+    display: flex;
+    flex-direction: row;
+    margin-right: 50px;
+}
+
+.menu {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .menu input { 
+    width: 500px;
+    height: 40px;
+    border-radius: 30px;
+    font-size: 1.2em;
+    padding-left: 40px;
+  }
+  .menu input::placeholder { 
+    width: 100%;
+  }
+
+
+  
+  .sub-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: -60px;
+    background-color: #f5f5f5;
+    
+    z-index: 1000;
+    
+  }
+  
+  .menu:hover .sub-menu {
+    display: block;
+  }
+  
+  .sub-menu a {
+    display: block;
+    padding: 10px 20px;
+    color:#e5636b;
+    text-decoration: none;
+    text-align: center;
+    border-bottom: #000000 solid 1px;
+  }
+  
+  .fa-solid, .fas {
+    font-weight: 900;
+    font-size: 30px;
+    color: #ff727b;
+}
+  
+  /* MAIN */
+
+  .container { 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .card { 
+    position: relative;
+    margin: 30px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: #c0c0c0;
+    -webkit-box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0); 
+    box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+    width: 400px;
+  
+  }
+
+  .card-image { 
+    display: flex;
+    width: 100%;
+    height: 60vh;
+    
+  }
+
+  .notes { 
+    position: absolute;
+    z-index: 1000;
+    border-radius: 100px;
+    padding: 8px 16px;
+    color: aliceblue;
+    background-color: #ff727b;
+    bottom: -7px;
+    left: 6px;
+    -webkit-box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0); 
+    box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+  }
+
+  .fraction { 
+    display: block;
+    text-align: center;
+  }
+  hr {
+    border: none;
+    border-top: 1px solid rgb(255, 255, 255); /* Ligne de fraction */
+    margin: 0;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.modal-content h2 { 
+  color: #f5f5f5;
+  font-size: 1.3em;
+
+}
+
+.modal-content p { 
+  color: #f5f5f5;
+  font-size: 1;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+
+
+@media (max-width:500px) {
+  .ul-menu { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 0px;
+    margin: 0 auto;
+    padding: 0px;
+  }
+  .ul-menu-hidden { 
+    display: hidden;
+  }
+  .div-menu {
+    width: 100%;
+  }
+  .menu input { 
+    width: 300px;
+  }
+  nav {
+    margin-bottom: 0px;
+}
+  nav ul li { 
+    margin: 10px 15px
+  }
+  .logo img {
+    width: 180px;
+    height: 70px;
+  }
+  .logo {
+    margin-left: 0px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .logo a{
+    display: block;
+  }
+  }
+  
