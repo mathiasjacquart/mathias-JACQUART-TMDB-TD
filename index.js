@@ -179,19 +179,23 @@ const createSerieElement = (value) => {
     // Contenu de la modale
     modal.innerHTML = `
         <div class="modal-dialog">
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
             <div class="modal-content">
+                <div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
                 <div class="modal-body d-flex">
-                   <div class="modal-image">
+                    <div class="modal-image">
                         <img src='${BASE_IMG}${value.poster_path}'>
-                   </div>
-                   <div class="modal-content-parag">
+                    </div>
+                    <div class="modal-content-parag">
                         <h1>${value.name}</h1>
                         <h2>Synopsis</h2>
-                        <p> ${value.overview}</p>
-                        <p> Sorti le : ${value.first_air_date}</p>
-                        <p>Note générale : ${value.vote_average.toFixed(1)} <i>sur ${value.vote_count} participants</i></p>
-                   </div>
+                        <p>${value.overview}</p>
+                        <p>Sorti le: ${value.first_air_date}</p>
+                        <p>Note générale: ${value.vote_average.toFixed(1)} sur ${value.vote_count} participants</p>
+                    </div>
                 </div>
             </div>
         </div>
