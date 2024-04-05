@@ -2,6 +2,7 @@ body {
     background-color: #141414;
     font-family: "Roboto", sans-serif ;
     color: white;
+    overflow: auto !important;
 }
 
 /* HEADER  */
@@ -96,7 +97,7 @@ nav ul li a {
   
   /* MAIN */
 
-  .container { 
+  .main { 
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -143,28 +144,77 @@ nav ul li a {
   }
   hr {
     border: none;
-    border-top: 1px solid rgb(255, 255, 255); /* Ligne de fraction */
+    border-top: 1px solid rgb(255, 255, 255);
     margin: 0;
 }
 
+.modal-open {
+  overflow: auto !important;
+  padding-right: 0px;
+}
 .modal {
   display: none;
   position: fixed;
-  z-index: 1;
-  left: 0;
+  z-index: 99999;
+  left: 0px;
   top: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   overflow: auto;
-  background-color: rgba(0,0,0,0.4);
-}
+  background-color: rgba(0,0,0,0.5);
 
+} 
+.modal-dialog {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+ .modal-show {
+  display: flex;
+  align-items: center;
+
+}
 .modal-content {
-  background-color: #fefefe;
-  margin: 15% auto;
+  display: flex !important;
+  background-color: #000000;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%;
+  width: 1400px;
+  height: 50vh;
+  margin: 100px;
+}
+.modal-body {
+  display: flex !important;
+  margin-left: 30px;
+}
+.modal-body p {
+  color: #f5f5f5;
+}
+
+.modal-image { 
+  display: flex;
+  justify-content: center;
+  
+}
+.modal-content-parag {
+  display: flex;
+  flex-direction: column;
+}
+.modal-content-parag h1{
+  text-align: center;
+  font-size: 1.6rem;
+}
+.modal-content-parag h2{
+  
+  font-size: 1.4rem;
+  padding: 10px 50px;
+  margin: 0;
+}
+.modal-content-parag p{
+  padding: 10px 50px;
+  font-size: 1.2rem;
+  margin: 0;
+
 }
 .close {
   color: #aaa;
@@ -183,12 +233,15 @@ nav ul li a {
   font-size: 1;
 }
 
-.close {
+.modal .fa-solid { 
   color: #aaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
+  position: ;
 }
+
+
 
 .close:hover,
 .close:focus {
@@ -238,6 +291,34 @@ nav ul li a {
   }
   .logo a{
     display: block;
+  }
+  .modal-body {
+    flex-direction: column;
+  }
+  .modal-content {
+    height: fit-content;
+    margin: 50px;
+    flex-direction: column;
+  }
+  .modal-body {
+    margin-top: 10px;
+  }
+  .modal-content-parag p {
+    padding: 10px;
+  }
+  .modal-content-parag h2 {
+    padding: 10px 10px;
+  }
+  .modal-image img {
+    width: 250px;
+    height: 350px;
+  }
+  .modal-image { 
+    justify-content: center;
+  }
+  .card {
+    width: 275px;
+    margin :15px 15px
   }
   }
   

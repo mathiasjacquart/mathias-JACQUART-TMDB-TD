@@ -11,7 +11,7 @@ let searchNowPlayingSerie = "tv/airing_today"
 let searchTopRatedSerie = "tv/top_rated"
 let searchDefault ="trending/movie/day"
 let media;
-let divMedia = document.querySelector(".container");
+let divMedia = document.querySelector(".main");
 
 getFilm(`${BASE_URL}${searchDefault}?api_key=${API_KEY}&language=fr-FR&page=1`);
 const logo = document.getElementById("logo")
@@ -97,13 +97,56 @@ const displaySerie = () => {
     divMedia.innerHTML=""
     divMedia.append(...mediaNode);
 }
-
-// création élément film
+let modalCounter = 0;
+// création élément films
 const createFilmElement = (value) => { 
-    // console.log(value);
+    const body = document.querySelector("body");
     const div = document.createElement("div");
+    div.setAttribute("id", `card`);
+    div.classList.add("card");
 
-    div.classList.add("card")
+    // Création de la modale
+    const modal = document.createElement("div");
+    modal.setAttribute("id", `modal-${modalCounter}`);
+    modalCounter++;
+    modal.classList.add("modal", "fade");
+
+    // Contenu de la modale
+    modal.innerHTML = `
+ 
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div>   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div class="modal-body d-flex">
+                   <div class="modal-image">
+                        <img src='${BASE_IMG}${value.poster_path}'>
+                   </div>
+                   <div class="modal-content-parag">
+                        <h1>${value.title}</h1>
+                        <h2>Synopsis</h2>
+                        <p> ${value.overview}</p>
+                        <p> Sorti le : ${value.release_date}</p>
+                        <p>Note générale : ${value.vote_average.toFixed(1)} <i>sur ${value.vote_count} participants</i></p>
+                   </div>
+                </div>
+            </div>
+        </div>
+    `;
+    
+
+    body.appendChild(modal);
+
+    // Attributs pour le modal(les datas)
+    div.setAttribute("data-bs-toggle", "modal");
+    div.setAttribute("data-bs-target", `#modal-${modalCounter - 1}`);
+
+  
+    div.addEventListener("click", () => {
+        
+        const myModal = new bootstrap.Modal(modal);
+        myModal.show();
+    });
     
     const img = document.createElement("img");
     img.src = `${BASE_IMG}${value.poster_path}`;
@@ -115,16 +158,62 @@ const createFilmElement = (value) => {
                     <hr> 
                     <span>10</span>
                 </div> `
-    div.append(img,p);
+
+        div.append(img,p);
+    
     return div;
-}
+    }
 // création élément série
 const createSerieElement = (value) => { 
+    const body = document.querySelector("body");
     const div = document.createElement("div");
-    div.classList.add("card")
+    div.setAttribute("id", `card`);
+    div.classList.add("card");
+
+    // Création de la modale
+    const modal = document.createElement("div");
+    modal.setAttribute("id", `modal-${modalCounter}`);
+    modalCounter++;
+    modal.classList.add("modal", "fade");
+
+    // Contenu de la modale
+    modal.innerHTML = `
+        <div class="modal-dialog">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-content">
+                <div class="modal-body d-flex">
+                   <div class="modal-image">
+                        <img src='${BASE_IMG}${value.poster_path}'>
+                   </div>
+                   <div class="modal-content-parag">
+                        <h1>${value.name}</h1>
+                        <h2>Synopsis</h2>
+                        <p> ${value.overview}</p>
+                        <p> Sorti le : ${value.first_air_date}</p>
+                        <p>Note générale : ${value.vote_average.toFixed(1)} <i>sur ${value.vote_count} participants</i></p>
+                   </div>
+                </div>
+            </div>
+        </div>
+    `;
+    
+
+    body.appendChild(modal);
+
+    // Attributs pour le modal(les datas)
+    div.setAttribute("data-bs-toggle", "modal");
+    div.setAttribute("data-bs-target", `#modal-${modalCounter - 1}`);
+
+  
+    div.addEventListener("click", () => {
+        
+        const myModal = new bootstrap.Modal(modal);
+        myModal.show();
+    });
+    
     const img = document.createElement("img");
     img.src = `${BASE_IMG}${value.poster_path}`;
-    img.classList.add("card-image");
+    img.classList.add("card-image")
     const p = document.createElement("p")
     p.classList.add("notes")
     p.innerHTML =`<div class="fraction">
@@ -132,37 +221,13 @@ const createSerieElement = (value) => {
                     <hr> 
                     <span>10</span>
                 </div> `
-    div.append(img,p);
+
+        div.append(img,p);
+    
     return div;
-}
+    }
 
-// modal 
-document.addEventListener("DOMContentLoaded", function() {
-let modal = document.getElementById("modal");
 
-let cards = document.querySelectorAll(".card");
-console.log(cards);
-
-let span = document.getElementsByClassName("close")[0];
-
-cards.forEach(card => {
-  card.addEventListener('click', () => {
-    console.log('totos');
-    modal.style.display = "block";
-    document.getElementById("modal-content").innerHTML = "Détails du film ici...";
-  });
-});
-
-span.onclick = function() {
-  modal.style.display = "none";
-};
-
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-};
-});
 //menu burger
 const burgerMenu = document.getElementById('burger-menu')
 console.log(burgerMenu);
